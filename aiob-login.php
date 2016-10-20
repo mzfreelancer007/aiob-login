@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: all-in-one-box-login
- * Plugin URI: http://danielpataki.com
+ * Plugin URI: http://softhandy.com
  * Description: This plugin helps you to create a easy login system.
  * Version: 1.0.0
  * Author: Ashek Al Mahmud
- * Author URI: http://danielpataki.com
+ * Author URI: http://softhandy.com
  * License: GPL2
  */
 
