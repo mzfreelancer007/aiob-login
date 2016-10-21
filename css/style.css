@@ -1,0 +1,7 @@
+.login_box {
+    padding: 10px;
+}
+
+.login_box input[type='submit'] {
+  float: right;
+}
