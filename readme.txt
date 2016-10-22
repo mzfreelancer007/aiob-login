@@ -1,7 +1,7 @@
 === Plugin Name ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: http://softhandy.com
-Tags: comments, spam
+Tags: login, easy login, all in one box login
 Requires at least: 3.0.1
 Tested up to: 4.6.1
 Stable tag: 4.3

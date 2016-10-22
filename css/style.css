@@ -1,7 +1,10 @@
-.login_box {
+body {
+    background: #ffffff !important;
+}
+.aiob_login_box {
     padding: 10px;
 }
 
-.login_box input[type='submit'] {
+.aiob_login_box input[type='submit'] {
   float: right;
 }
