@@ -8,7 +8,6 @@
  * Author URI: http://softhandy.com
  * License: GPL2
  */
-
 define( 'AIOB_L_PLUGIN_PATH', plugin_dir_url( __FILE__ ) );
 
  // Add script to plugin
@@ -21,7 +20,7 @@ define( 'AIOB_L_PLUGIN_PATH', plugin_dir_url( __FILE__ ) );
  add_action('wp_enqueue_scripts','aiob_add_script_to_plugin');
 
  // Login form
- 
+
  function aiob_login_form () {
 
   if ( is_user_logged_in() ) {
@@ -29,7 +28,7 @@ define( 'AIOB_L_PLUGIN_PATH', plugin_dir_url( __FILE__ ) );
     $output = '<p>Welcome to our site, <strong>'.$current_user->user_login.'</strong></p>';
   } else {
     $output = '<div class="aiob_login_box">';
-    $output .= '<form method="post" action="'.get_site_url().'/wp-login.php" class="wp-user-form">';
+    $output .= '<form method="post" action="'.wp_login_url().'" class="wp-user-form">';
     $output .= '<div class="aiob_username">';
     $output .= '<label for="user_login">Username :</label>';
     $output .= '<input type="text" name="log" value="" size="20" id="aiob_user_login" tabindex="11" />';
