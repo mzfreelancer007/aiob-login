@@ -12,6 +12,7 @@
       <input type="text" name="username" value="">
       <input type="password" name="pass" value="">
       <input type="submit" name="name" value="Login">
+      <input type="hidden" name="login_page_id" value="<?php echo get_the_ID();?>">
       <input type="hidden" name="action" value="aiob_login_ac">
     </form>
     <?php
@@ -30,11 +31,15 @@
 
 
 
- function prefix_send_email_to_admin() {
+ function aiob_send_email_to_admin() {
+     if(!is_user_logged_in()){
    $redirect_link     = (get_option('aiob_login_sett_redirect') ? get_option('aiob_login_sett_redirect') : '/');
    $redirect_link     = get_permalink($redirect_link);
    $login             = $_POST['username'];
    $login_pass        = $_POST['pass'];
+   $login_page_id     = $_POST['login_page_id'];
+   $login_page_url    = get_permalink($login_page_id);
+   //print_r($login_page_url);
 
    (get_option('aiob_login_notif_login')) ?
    $notif_login = get_option('aiob_login_notif_login') : $notif_login = 'Username is empty';
@@ -45,12 +50,13 @@
    (get_option('aiob_login_notif_loginpass_w')) ?
    $notif_loginpass_w = get_option('aiob_login_notif_loginpass_w') : $notif_loginpass_w = 'Username or Password is wrong';
 
-   if(empty($login) && !empty($login_pass)){wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_login));exit;};
-   if(empty($login_pass) && !empty($login)){wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_pass));exit;};
-   if(empty($login_pass) && empty($login)){wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_loginpass));exit;};
+   if(empty($login) && !empty($login_pass)){wp_redirect($login_page_url.'?error_msg='.urlencode($notif_login));exit;};
+   if(empty($login_pass) && !empty($login)){wp_redirect($login_page_url.'?error_msg='.urlencode($notif_pass));exit;};
+   if(empty($login_pass) && empty($login)){wp_redirect($login_page_url.'?error_msg='.urlencode($notif_loginpass));exit;};
+
    if(!empty($login) && !empty($login_pass)){
      if(username_exists( $login )){
-       wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_loginpass_w));exit;
+       wp_redirect($login_page_url.'?error_msg='.urlencode($notif_loginpass_w));exit;
      }
     $user_info = get_user_by('login',$login);
     wp_hash_password($login_pass);
@@ -63,13 +69,14 @@
       wp_redirect($redirect_link);
       exit;
     } else {
-      wp_redirect('/wordpress/testlogin?error_msg="Username or Password is wrong"');exit;
+      wp_redirect('?error_msg="Username or Password is wrong"');exit;
     }
    }
+ }
 
  }
- add_action( 'admin_post_nopriv_aiob_login_ac', 'prefix_send_email_to_admin' );
- add_action( 'admin_post_aiob_login_ac', 'prefix_send_email_to_admin' );
+ add_action( 'admin_post_nopriv_aiob_login_ac', 'aiob_send_email_to_admin' );
+ add_action( 'admin_post_aiob_login_ac', 'aiob_send_email_to_admin' );
 
 
 ?>
