@@ -3,7 +3,7 @@
  * Plugin Name: all-in-one-box-login
  * Plugin URI: http://softhandy.com
  * Description: This plugin helps you to create a easy login system.
- * Version: 1.0.0
+ * Version: 2.0.0
  * Author: Ashek Al Mahmud
  * Text Domain: aiob-login
  * Author URI: http://softhandy.com
