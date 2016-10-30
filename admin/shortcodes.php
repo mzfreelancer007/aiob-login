@@ -49,7 +49,7 @@
    if(empty($login_pass) && !empty($login)){wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_pass));exit;};
    if(empty($login_pass) && empty($login)){wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_loginpass));exit;};
    if(!empty($login) && !empty($login_pass)){
-     if(empty(get_user_by('login',$login))){
+     if(username_exists( $login )){
        wp_redirect('/wordpress/testlogin?error_msg='.urlencode($notif_loginpass_w));exit;
      }
     $user_info = get_user_by('login',$login);
