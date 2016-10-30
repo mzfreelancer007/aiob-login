@@ -1,0 +1,10 @@
+h1.aiob_login_title {
+    text-align: center;
+    padding: 20px;
+    background: #4D924D;
+    color: #fff;
+}
+
+#aiob_login_settings_form select {
+  width: 50%;
+}
